@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#03141c">
+<link rel="icon" href="data:,">
 <title>Glued Water</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#03141c;color:#e9fbff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{border:0;cursor:pointer}#setup{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 20%,#0d3e52 0,#062633 30%,#03141c 70%)}.card{width:min(430px,100%);padding:26px;border-radius:28px;background:#08232df0;border:1px solid #ffffff17;box-shadow:0 24px 80px #0007;backdrop-filter:blur(24px)}.brand{display:flex;align-items:center;gap:14px;margin-bottom:22px}.logo{width:48px;height:48px;border-radius:17px;background:linear-gradient(145deg,#65dcff,#1989bb);display:grid;place-items:center;color:#05202b;font-weight:900;font-size:20px;box-shadow:0 10px 30px #2abdec44}.brand h1{font-size:22px;margin:0}.brand p{margin:3px 0 0;color:#99b8c2;font-size:13px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border-radius:15px;background:#ffffff0a;margin-bottom:18px}.tabs button{height:42px;border-radius:11px;background:transparent;color:#8fb0bb}.tabs button.active{background:#ffffff10;color:#fff}.code{font-size:52px;letter-spacing:.18em;font-weight:850;text-align:center;margin:12px 0 18px}.primary{width:100%;height:50px;border-radius:15px;background:#67dcff;color:#05202b;font-weight:800}.joinrow input{width:100%;height:56px;border:1px solid #ffffff18;background:#ffffff09;color:#fff;border-radius:15px;padding:0 14px;font-size:24px;letter-spacing:.18em;text-align:center;outline:none}.status{display:flex;justify-content:center;align-items:center;gap:8px;color:#8fb0bb;font-size:12px;margin-top:14px}.dot{width:8px;height:8px;border-radius:50%;background:#6a7d84}.dot.live{background:#4ce39b;box-shadow:0 0 0 4px #4ce39b20}.hint{font-size:12px;line-height:1.5;color:#6f929d;margin:16px 0 0}.hidden{display:none!important}#app{position:fixed;inset:0;background:#041922;touch-action:none}#water{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}.topbar{position:absolute;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:10}.group{display:flex;gap:8px;pointer-events:auto}.pill,.icon{height:42px;border:1px solid #ffffff1a;background:#061e28d9;color:#dff8ff;backdrop-filter:blur(16px);box-shadow:0 8px 28px #0004}.pill{display:flex;align-items:center;gap:9px;padding:0 13px;border-radius:14px;font-size:12px}.pill strong{letter-spacing:.12em}.icon{width:42px;border-radius:14px;display:grid;place-items:center;font-size:18px}.legend{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 14px;border-radius:999px;border:1px solid #ffffff15;background:#061e28b8;color:#a7c8d2;font-size:11px;backdrop-filter:blur(14px);pointer-events:none;transition:.35s;white-space:nowrap}.modal{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:#00101888;backdrop-filter:blur(8px);z-index:30}.shareCard{width:min(360px,100%);padding:21px;border-radius:24px;background:#08232df8;border:1px solid #ffffff17;box-shadow:0 24px 70px #0008}.shareHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.shareHead h2{font-size:18px;margin:0}.shareHead p{font-size:12px;color:#8fb0bb;margin:5px 0 0}.close{width:36px;height:36px;border-radius:12px;background:#ffffff0d;color:#fff}.qr{width:210px;height:210px;margin:18px auto 13px;background:#fff;border-radius:16px;display:grid;place-items:center;padding:10px}.shareCode{text-align:center;font-size:32px;letter-spacing:.17em;font-weight:850}.shareActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.shareActions button{height:44px;border-radius:13px;background:#ffffff0d;color:#fff}.shareActions .accent{background:#67dcff;color:#05202b;font-weight:800}.url{margin-top:10px;padding:10px 12px;border-radius:12px;background:#ffffff08;color:#789aa5;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:600px){.role{display:none}.legend{bottom:max(12px,env(safe-area-inset-bottom));max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}.card{padding:22px}}
@@ -52,8 +53,8 @@ const $=s=>document.querySelector(s);
 const canvas=$('#water'),ctx=canvas.getContext('2d',{alpha:false});
 const hostTab=$('#hostTab'),joinTab=$('#joinTab'),hostPanel=$('#hostPanel'),joinPanel=$('#joinPanel');
 const hostStatus=$('#hostStatus'),joinStatus=$('#joinStatus');
-let room,sendEvent,sendControl,code='',role='host',peerIds=new Set();
-let W=0,H=0,DPR=1,cols=0,rows=0,current,next,imageData,active=new Map(),lastFrame=performance.now();
+let room,waterAction,controlAction,code='',role='host',peerIds=new Set();
+let W=0,H=0,DPR=1,cols=0,rows=0,current,next,imageData,active=new Map(),lastFrame=0,running=false;
 const APP='glued-water-v1';
 
 function setTab(tab){const host=tab==='host';hostTab.classList.toggle('active',host);joinTab.classList.toggle('active',!host);hostPanel.classList.toggle('hidden',!host);joinPanel.classList.toggle('hidden',host)}
@@ -66,18 +67,16 @@ function updatePeers(){const n=1+peerIds.size;$('#peerCount').textContent=`${n} 
 
 function openRoom(roomCode,newRole){
   code=roomCode;role=newRole;
-  room=joinRoom({appId:APP},code);
-  [sendEvent]=room.makeAction('water');
-  [sendControl]=room.makeAction('control');
-  const [,getEvent]=room.makeAction('water');
-  const [,getControl]=room.makeAction('control');
-  getEvent(data=>receiveImpulse(data));
-  getControl(data=>{if(data?.type==='reset')clearWater(false)});
-  room.onPeerJoin(id=>{peerIds.add(id);updatePeers()});
-  room.onPeerLeave(id=>{peerIds.delete(id);updatePeers()});
+  room=joinRoom({appId:APP},'room-'+code);
+  waterAction=room.makeAction('water');
+  controlAction=room.makeAction('control');
+  waterAction.onMessage=data=>receiveImpulse(data);
+  controlAction.onMessage=data=>{if(data?.type==='reset')clearWater(false)};
+  room.onPeerJoin=id=>{peerIds.add(id);updatePeers()};
+  room.onPeerLeave=id=>{peerIds.delete(id);updatePeers()};
   $('#setup').classList.add('hidden');$('#app').classList.remove('hidden');
   $('#codeBadge').textContent=code;$('#shareCode').textContent=code;$('#roleBadge').textContent=role==='host'?'ведущий':'участник';
-  updatePeers();resize();setTimeout(()=>$('#legend').style.opacity='0',3500);
+  updatePeers();resize();startLoop();setTimeout(()=>$('#legend').style.opacity='0',3500);
   if(role==='host')showShare();
 }
 
@@ -89,7 +88,7 @@ async function showShare(){const link=shareLink();$('#shareUrl').textContent=lin
 $('#shareBtn').onclick=showShare;$('#closeShare').onclick=()=>$('#shareModal').classList.add('hidden');
 $('#copyBtn').onclick=async()=>{await navigator.clipboard.writeText(shareLink());$('#copyBtn').textContent='Скопировано';setTimeout(()=>$('#copyBtn').textContent='Копировать ссылку',1400)};
 $('#nativeShare').onclick=async()=>{const data={title:'Glued Water',text:`Подключись к пространству ${code}`,url:shareLink()};if(navigator.share)await navigator.share(data);else await navigator.clipboard.writeText(data.url)};
-$('#resetBtn').onclick=()=>{clearWater(true)};
+$('#resetBtn').onclick=()=>clearWater(true);
 
 function resize(){
   DPR=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);
@@ -97,23 +96,25 @@ function resize(){
   current=new Float32Array(cols*rows);next=new Float32Array(cols*rows);imageData=ctx.createImageData(cols,rows);
   seedWater();
 }
-addEventListener('resize',resize);
+addEventListener('resize',()=>{if(!$('#app').classList.contains('hidden'))resize()});
 function seedWater(){for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const i=y*cols+x;current[i]=(Math.sin(x*.17)+Math.cos(y*.13))*0.0008}}
-function clearWater(broadcast){current.fill(0);next.fill(0);if(broadcast&&sendControl)sendControl({type:'reset'})}
+function clearWater(broadcast){if(!current||!next)return;current.fill(0);next.fill(0);if(broadcast&&controlAction)controlAction.send({type:'reset'})}
 
 function impulse(nx,ny,strength=.9,radius=.025){
+  if(!current)return;
   const cx=Math.round(nx*(cols-1)),cy=Math.round(ny*(rows-1)),r=Math.max(2,Math.round(radius*Math.min(cols,rows)));
   for(let y=-r;y<=r;y++)for(let x=-r;x<=r;x++){const px=cx+x,py=cy+y;if(px<1||py<1||px>=cols-1||py>=rows-1)continue;const d=Math.sqrt(x*x+y*y)/r;if(d<=1)current[py*cols+px]+=Math.cos(d*Math.PI*.5)*strength}
 }
-function emitImpulse(nx,ny,strength,radius){impulse(nx,ny,strength,radius);if(sendEvent)sendEvent({x:nx,y:ny,s:strength,r:radius,t:performance.now()})}
+function emitImpulse(nx,ny,strength,radius){impulse(nx,ny,strength,radius);waterAction?.send({x:nx,y:ny,s:strength,r:radius,t:performance.now()})}
 function receiveImpulse(data){if(!data)return;impulse(data.x,data.y,data.s,data.r)}
 
 function pointerData(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width,y:(e.clientY-r.top)/r.height}}
-canvas.addEventListener('pointerdown',e=>{e.preventDefault();canvas.setPointerCapture(e.pointerId);const p=pointerData(e);active.set(e.pointerId,{...p,t:performance.now()});emitImpulse(p.x,p.y,1.05,0.035)});
+canvas.addEventListener('pointerdown',e=>{e.preventDefault();canvas.setPointerCapture?.(e.pointerId);const p=pointerData(e);active.set(e.pointerId,{...p,t:performance.now()});emitImpulse(p.x,p.y,1.05,0.035)});
 canvas.addEventListener('pointermove',e=>{if(!active.has(e.pointerId))return;e.preventDefault();const prev=active.get(e.pointerId),p=pointerData(e),dx=p.x-prev.x,dy=p.y-prev.y,dist=Math.hypot(dx,dy),dt=Math.max(8,performance.now()-prev.t);if(dist>.003){const speed=Math.min(2.2,dist*13000/dt);emitImpulse(p.x,p.y,.25+speed*.32,.022+Math.min(.03,speed*.012));active.set(e.pointerId,{...p,t:performance.now()})}});
-for(const type of ['pointerup','pointercancel'])canvas.addEventListener(type,e=>active.delete(e.pointerId));
+for(const type of ['pointerup','pointercancel'])canvas.addEventListener(type,e=>{active.delete(e.pointerId);canvas.releasePointerCapture?.(e.pointerId)});
 
 function simulate(){
+  if(!current||!next)return;
   const damping=.992;
   for(let y=1;y<rows-1;y++)for(let x=1;x<cols-1;x++){
     const i=y*cols+x;
@@ -124,6 +125,7 @@ function simulate(){
 }
 
 function render(){
+  if(!imageData||!current)return;
   const d=imageData.data;
   for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
     const i=y*cols+x,k=i*4;
@@ -141,8 +143,8 @@ function render(){
   const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(67,184,219,.10)');g.addColorStop(.5,'rgba(0,70,95,.03)');g.addColorStop(1,'rgba(0,0,0,.18)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
 }
 
+function startLoop(){if(running)return;running=true;lastFrame=performance.now();requestAnimationFrame(loop)}
 function loop(now){const dt=now-lastFrame;lastFrame=now;const steps=dt>24?2:1;for(let i=0;i<steps;i++)simulate();render();requestAnimationFrame(loop)}
-requestAnimationFrame(loop);
 
 const queryRoom=new URL(location.href).searchParams.get('room');
 if(/^\d{4}$/.test(queryRoom||'')){setTab('join');$('#joinCode').value=queryRoom;status(joinStatus,`Готово к подключению к ${queryRoom}`,true)}
