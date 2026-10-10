@@ -7,147 +7,63 @@
 <link rel="icon" href="data:,">
 <title>Glued Water</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#03141c;color:#e9fbff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{border:0;cursor:pointer}#setup{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 20%,#0d3e52 0,#062633 30%,#03141c 70%)}.card{width:min(430px,100%);padding:26px;border-radius:28px;background:#08232df0;border:1px solid #ffffff17;box-shadow:0 24px 80px #0007;backdrop-filter:blur(24px)}.brand{display:flex;align-items:center;gap:14px;margin-bottom:22px}.logo{width:48px;height:48px;border-radius:17px;background:linear-gradient(145deg,#65dcff,#1989bb);display:grid;place-items:center;color:#05202b;font-weight:900;font-size:20px;box-shadow:0 10px 30px #2abdec44}.brand h1{font-size:22px;margin:0}.brand p{margin:3px 0 0;color:#99b8c2;font-size:13px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border-radius:15px;background:#ffffff0a;margin-bottom:18px}.tabs button{height:42px;border-radius:11px;background:transparent;color:#8fb0bb}.tabs button.active{background:#ffffff10;color:#fff}.code{font-size:52px;letter-spacing:.18em;font-weight:850;text-align:center;margin:12px 0 18px}.primary{width:100%;height:50px;border-radius:15px;background:#67dcff;color:#05202b;font-weight:800}.joinrow input{width:100%;height:56px;border:1px solid #ffffff18;background:#ffffff09;color:#fff;border-radius:15px;padding:0 14px;font-size:24px;letter-spacing:.18em;text-align:center;outline:none}.status{display:flex;justify-content:center;align-items:center;gap:8px;color:#8fb0bb;font-size:12px;margin-top:14px}.dot{width:8px;height:8px;border-radius:50%;background:#6a7d84}.dot.live{background:#4ce39b;box-shadow:0 0 0 4px #4ce39b20}.hint{font-size:12px;line-height:1.5;color:#6f929d;margin:16px 0 0}.hidden{display:none!important}#app{position:fixed;inset:0;background:#041922;touch-action:none}#water{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}.topbar{position:absolute;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:10}.group{display:flex;gap:8px;pointer-events:auto}.pill,.icon{height:42px;border:1px solid #ffffff1a;background:#061e28d9;color:#dff8ff;backdrop-filter:blur(16px);box-shadow:0 8px 28px #0004}.pill{display:flex;align-items:center;gap:9px;padding:0 13px;border-radius:14px;font-size:12px}.pill strong{letter-spacing:.12em}.icon{width:42px;border-radius:14px;display:grid;place-items:center;font-size:18px}.legend{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 14px;border-radius:999px;border:1px solid #ffffff15;background:#061e28b8;color:#a7c8d2;font-size:11px;backdrop-filter:blur(14px);pointer-events:none;transition:.35s;white-space:nowrap}.modal{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:#00101888;backdrop-filter:blur(8px);z-index:30}.shareCard{width:min(360px,100%);padding:21px;border-radius:24px;background:#08232df8;border:1px solid #ffffff17;box-shadow:0 24px 70px #0008}.shareHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.shareHead h2{font-size:18px;margin:0}.shareHead p{font-size:12px;color:#8fb0bb;margin:5px 0 0}.close{width:36px;height:36px;border-radius:12px;background:#ffffff0d;color:#fff}.qr{width:210px;height:210px;margin:18px auto 13px;background:#fff;border-radius:16px;display:grid;place-items:center;padding:10px}.shareCode{text-align:center;font-size:32px;letter-spacing:.17em;font-weight:850}.shareActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.shareActions button{height:44px;border-radius:13px;background:#ffffff0d;color:#fff}.shareActions .accent{background:#67dcff;color:#05202b;font-weight:800}.url{margin-top:10px;padding:10px 12px;border-radius:12px;background:#ffffff08;color:#789aa5;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:600px){.role{display:none}.legend{bottom:max(12px,env(safe-area-inset-bottom));max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}.card{padding:22px}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#03141c;color:#e9fbff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{border:0;cursor:pointer}.hidden{display:none!important}#setup{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 20%,#0d3e52 0,#062633 30%,#03141c 70%)}.card{width:min(430px,100%);padding:26px;border-radius:28px;background:#08232df0;border:1px solid #ffffff17;box-shadow:0 24px 80px #0007;backdrop-filter:blur(24px)}.brand{display:flex;align-items:center;gap:14px;margin-bottom:22px}.logo{width:48px;height:48px;border-radius:17px;background:linear-gradient(145deg,#65dcff,#1989bb);display:grid;place-items:center;color:#05202b;font-weight:900;font-size:20px;box-shadow:0 10px 30px #2abdec44}.brand h1{font-size:22px;margin:0}.brand p{margin:3px 0 0;color:#99b8c2;font-size:13px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border-radius:15px;background:#ffffff0a;margin-bottom:18px}.tabs button{height:42px;border-radius:11px;background:transparent;color:#8fb0bb}.tabs button.active{background:#ffffff10;color:#fff}.code{font-size:52px;letter-spacing:.18em;font-weight:850;text-align:center;margin:12px 0 18px}.primary{width:100%;height:50px;border-radius:15px;background:#67dcff;color:#05202b;font-weight:800}.joinrow input{width:100%;height:56px;border:1px solid #ffffff18;background:#ffffff09;color:#fff;border-radius:15px;padding:0 14px;font-size:24px;letter-spacing:.18em;text-align:center;outline:none}.status{display:flex;justify-content:center;align-items:center;gap:8px;color:#8fb0bb;font-size:12px;margin-top:14px}.dot{width:8px;height:8px;border-radius:50%;background:#6a7d84}.dot.live{background:#4ce39b;box-shadow:0 0 0 4px #4ce39b20}.hint{font-size:12px;line-height:1.5;color:#6f929d;margin:16px 0 0}#app{position:fixed;inset:0;background:#041922;touch-action:none}#water{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}.topbar{position:absolute;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:10}.group{display:flex;gap:8px;pointer-events:auto}.pill,.icon{height:42px;border:1px solid #ffffff1a;background:#061e28d9;color:#dff8ff;backdrop-filter:blur(16px);box-shadow:0 8px 28px #0004}.pill{display:flex;align-items:center;gap:9px;padding:0 13px;border-radius:14px;font-size:12px}.pill strong{letter-spacing:.12em}.icon{min-width:42px;padding:0 11px;border-radius:14px;display:grid;place-items:center;font-size:18px}.sensor{font-size:11px;display:flex;gap:7px;align-items:center}.sensor.on{border-color:#4ce39b55}.legend{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 14px;border-radius:999px;border:1px solid #ffffff15;background:#061e28b8;color:#a7c8d2;font-size:11px;backdrop-filter:blur(14px);pointer-events:none;transition:.35s;white-space:nowrap}.modal{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:#00101888;backdrop-filter:blur(8px);z-index:30}.shareCard{width:min(360px,100%);padding:21px;border-radius:24px;background:#08232df8;border:1px solid #ffffff17;box-shadow:0 24px 70px #0008}.shareHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.shareHead h2{font-size:18px;margin:0}.shareHead p{font-size:12px;color:#8fb0bb;margin:5px 0 0}.close{width:36px;height:36px;border-radius:12px;background:#ffffff0d;color:#fff}.qr{width:210px;height:210px;margin:18px auto 13px;background:#fff;border-radius:16px;display:grid;place-items:center;padding:10px}.shareCode{text-align:center;font-size:32px;letter-spacing:.17em;font-weight:850}.shareActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.shareActions button{height:44px;border-radius:13px;background:#ffffff0d;color:#fff}.shareActions .accent{background:#67dcff;color:#05202b;font-weight:800}.url{margin-top:10px;padding:10px 12px;border-radius:12px;background:#ffffff08;color:#789aa5;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:700px){.role{display:none}.sensor span{display:none}.sensor{min-width:42px;padding:0}.legend{bottom:max(12px,env(safe-area-inset-bottom));max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}.card{padding:22px}}
 </style>
 </head>
 <body>
-<section id="setup">
-  <div class="card">
-    <div class="brand"><div class="logo">GW</div><div><h1>Glued Water</h1><p>Одна вода на нескольких экранах</p></div></div>
-    <div class="tabs"><button id="hostTab" class="active">Ведущий</button><button id="joinTab">Подключиться</button></div>
-    <div id="hostPanel">
-      <div id="roomCode" class="code">----</div>
-      <button id="createBtn" class="primary">Создать пространство</button>
-      <div class="status" id="hostStatus"><span class="dot"></span><span>Пространство ещё не создано</span></div>
-      <p class="hint">После создания открой QR-код или отправь ссылку второму устройству.</p>
-    </div>
-    <div id="joinPanel" class="hidden">
-      <div class="joinrow"><input id="joinCode" inputmode="numeric" maxlength="4" placeholder="0000"></div>
-      <button id="joinBtn" class="primary" style="margin-top:12px">Подключиться</button>
-      <div class="status" id="joinStatus"><span class="dot"></span><span>Введите код пространства</span></div>
-    </div>
-  </div>
-</section>
-<section id="app" class="hidden">
-  <canvas id="water"></canvas>
-  <div class="topbar">
-    <div class="group"><div class="pill"><span class="dot live"></span><strong id="codeBadge">0000</strong><span id="roleBadge" class="role">ведущий</span><span id="peerCount">1 устройство</span></div></div>
-    <div class="group"><button id="shareBtn" class="icon">↗</button><button id="resetBtn" class="icon">↺</button></div>
-  </div>
-  <div id="legend" class="legend">Коснись воды или проведи пальцем</div>
-  <div id="shareModal" class="modal hidden">
-    <div class="shareCard">
-      <div class="shareHead"><div><h2>Подключить устройство</h2><p>Отсканируйте QR-код или откройте ссылку.</p></div><button id="closeShare" class="close">×</button></div>
-      <div class="qr"><canvas id="qrCanvas"></canvas></div>
-      <div id="shareCode" class="shareCode">0000</div>
-      <div class="shareActions"><button id="copyBtn" class="accent">Копировать ссылку</button><button id="nativeShare">Поделиться</button></div>
-      <div id="shareUrl" class="url"></div>
-    </div>
-  </div>
-</section>
+<section id="setup"><div class="card"><div class="brand"><div class="logo">GW</div><div><h1>Glued Water</h1><p>Одна вода на нескольких экранах</p></div></div><div class="tabs"><button id="hostTab" class="active">Ведущий</button><button id="joinTab">Подключиться</button></div><div id="hostPanel"><div id="roomCode" class="code">----</div><button id="createBtn" class="primary">Создать пространство</button><div class="status" id="hostStatus"><span class="dot"></span><span>Пространство ещё не создано</span></div><p class="hint">После создания открой QR-код или отправь ссылку второму устройству.</p></div><div id="joinPanel" class="hidden"><div class="joinrow"><input id="joinCode" inputmode="numeric" maxlength="4" placeholder="0000"></div><button id="joinBtn" class="primary" style="margin-top:12px">Подключиться</button><div class="status" id="joinStatus"><span class="dot"></span><span>Введите код пространства</span></div></div></div></section>
+<section id="app" class="hidden"><canvas id="water"></canvas><div class="topbar"><div class="group"><div class="pill"><span class="dot live"></span><strong id="codeBadge">0000</strong><span id="roleBadge" class="role">ведущий</span><span id="peerCount">1 устройство</span></div></div><div class="group"><button id="motionBtn" class="icon sensor" title="Акселерометр">◉ <span id="motionLabel">сенсор</span></button><button id="shareBtn" class="icon">↗</button><button id="resetBtn" class="icon">↺</button></div></div><div id="legend" class="legend">Коснись воды или наклоняй устройство</div><div id="shareModal" class="modal hidden"><div class="shareCard"><div class="shareHead"><div><h2>Подключить устройство</h2><p>Отсканируйте QR-код или откройте ссылку.</p></div><button id="closeShare" class="close">×</button></div><div class="qr"><canvas id="qrCanvas"></canvas></div><div id="shareCode" class="shareCode">0000</div><div class="shareActions"><button id="copyBtn" class="accent">Копировать ссылку</button><button id="nativeShare">Поделиться</button></div><div id="shareUrl" class="url"></div></div></div></section>
 <script type="module">
 import {joinRoom} from 'https://esm.run/trystero@0.25.4';
 import QRCode from 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm';
-
-const $=s=>document.querySelector(s);
-const canvas=$('#water'),ctx=canvas.getContext('2d',{alpha:false});
-const hostTab=$('#hostTab'),joinTab=$('#joinTab'),hostPanel=$('#hostPanel'),joinPanel=$('#joinPanel');
-const hostStatus=$('#hostStatus'),joinStatus=$('#joinStatus');
+const $=s=>document.querySelector(s),canvas=$('#water'),ctx=canvas.getContext('2d',{alpha:false});
+const hostTab=$('#hostTab'),joinTab=$('#joinTab'),hostPanel=$('#hostPanel'),joinPanel=$('#joinPanel'),hostStatus=$('#hostStatus'),joinStatus=$('#joinStatus');
 let room,waterAction,controlAction,code='',role='host',peerIds=new Set();
 let W=0,H=0,DPR=1,cols=0,rows=0,current,next,imageData,active=new Map(),lastFrame=0,running=false;
-const APP='glued-water-v1';
-
+let motionAvailable='DeviceOrientationEvent'in window||'DeviceMotionEvent'in window,motionEnabled=false,motionSeen=false,tiltX=0,tiltY=0,targetTiltX=0,targetTiltY=0,lastMotionKick=0;
+const APP='glued-water-v2';
 function setTab(tab){const host=tab==='host';hostTab.classList.toggle('active',host);joinTab.classList.toggle('active',!host);hostPanel.classList.toggle('hidden',!host);joinPanel.classList.toggle('hidden',host)}
 hostTab.onclick=()=>setTab('host');joinTab.onclick=()=>setTab('join');
-
 function makeCode(){return String(Math.floor(1000+Math.random()*9000))}
 function shareLink(){const u=new URL(location.href);u.search='';u.searchParams.set('room',code);return u.toString()}
 function status(el,text,live=false){el.innerHTML=`<span class="dot${live?' live':''}"></span><span>${text}</span>`}
 function updatePeers(){const n=1+peerIds.size;$('#peerCount').textContent=`${n} ${n===1?'устройство':n<5?'устройства':'устройств'}`}
-
-function openRoom(roomCode,newRole){
-  code=roomCode;role=newRole;
-  room=joinRoom({appId:APP},'room-'+code);
-  waterAction=room.makeAction('water');
-  controlAction=room.makeAction('control');
-  waterAction.onMessage=data=>receiveImpulse(data);
-  controlAction.onMessage=data=>{if(data?.type==='reset')clearWater(false)};
-  room.onPeerJoin=id=>{peerIds.add(id);updatePeers()};
-  room.onPeerLeave=id=>{peerIds.delete(id);updatePeers()};
-  $('#setup').classList.add('hidden');$('#app').classList.remove('hidden');
-  $('#codeBadge').textContent=code;$('#shareCode').textContent=code;$('#roleBadge').textContent=role==='host'?'ведущий':'участник';
-  updatePeers();resize();startLoop();setTimeout(()=>$('#legend').style.opacity='0',3500);
-  if(role==='host')showShare();
-}
-
+function updateMotionUI(text){$('#motionLabel').textContent=text;$('#motionBtn').classList.toggle('on',motionEnabled)}
+function openRoom(roomCode,newRole){code=roomCode;role=newRole;room=joinRoom({appId:APP},'room-'+code);waterAction=room.makeAction('water');controlAction=room.makeAction('control');waterAction.onMessage=data=>receiveImpulse(data);controlAction.onMessage=data=>{if(data?.type==='reset')clearWater(false)};room.onPeerJoin=id=>{peerIds.add(id);updatePeers()};room.onPeerLeave=id=>{peerIds.delete(id);updatePeers()};$('#setup').classList.add('hidden');$('#app').classList.remove('hidden');$('#codeBadge').textContent=code;$('#shareCode').textContent=code;$('#roleBadge').textContent=role==='host'?'ведущий':'участник';updatePeers();resize();startLoop();initMotionState();setTimeout(()=>$('#legend').style.opacity='0',5000);if(role==='host')showShare()}
 $('#createBtn').onclick=()=>{const c=makeCode();$('#roomCode').textContent=c;status(hostStatus,'Пространство создано',true);openRoom(c,'host')};
 $('#joinBtn').onclick=()=>{const c=$('#joinCode').value.replace(/\D/g,'').slice(0,4);if(c.length!==4){status(joinStatus,'Нужен 4-значный код');return}status(joinStatus,'Подключение…',true);openRoom(c,'guest')};
 $('#joinCode').addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,4));
-
-async function showShare(){const link=shareLink();$('#shareUrl').textContent=link;$('#shareCode').textContent=code;const q=$('#qrCanvas');await QRCode.toCanvas(q,link,{width:190,margin:1,color:{dark:'#05202b',light:'#ffffff'}});$('#shareModal').classList.remove('hidden')}
+async function showShare(){const link=shareLink();$('#shareUrl').textContent=link;$('#shareCode').textContent=code;await QRCode.toCanvas($('#qrCanvas'),link,{width:190,margin:1,color:{dark:'#05202b',light:'#ffffff'}});$('#shareModal').classList.remove('hidden')}
 $('#shareBtn').onclick=showShare;$('#closeShare').onclick=()=>$('#shareModal').classList.add('hidden');
 $('#copyBtn').onclick=async()=>{await navigator.clipboard.writeText(shareLink());$('#copyBtn').textContent='Скопировано';setTimeout(()=>$('#copyBtn').textContent='Копировать ссылку',1400)};
 $('#nativeShare').onclick=async()=>{const data={title:'Glued Water',text:`Подключись к пространству ${code}`,url:shareLink()};if(navigator.share)await navigator.share(data);else await navigator.clipboard.writeText(data.url)};
 $('#resetBtn').onclick=()=>clearWater(true);
-
-function resize(){
-  DPR=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);
-  cols=Math.max(90,Math.min(180,Math.round(W/7)));rows=Math.max(70,Math.min(140,Math.round(H/7)));
-  current=new Float32Array(cols*rows);next=new Float32Array(cols*rows);imageData=ctx.createImageData(cols,rows);
-  seedWater();
-}
+function resize(){DPR=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);cols=Math.max(90,Math.min(180,Math.round(W/7)));rows=Math.max(70,Math.min(140,Math.round(H/7)));current=new Float32Array(cols*rows);next=new Float32Array(cols*rows);imageData=ctx.createImageData(cols,rows);seedWater()}
 addEventListener('resize',()=>{if(!$('#app').classList.contains('hidden'))resize()});
-function seedWater(){for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const i=y*cols+x;current[i]=(Math.sin(x*.17)+Math.cos(y*.13))*0.0008}}
+function seedWater(){for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)current[y*cols+x]=(Math.sin(x*.17)+Math.cos(y*.13))*0.0008}
 function clearWater(broadcast){if(!current||!next)return;current.fill(0);next.fill(0);if(broadcast&&controlAction)controlAction.send({type:'reset'})}
-
-function impulse(nx,ny,strength=.9,radius=.025){
-  if(!current)return;
-  const cx=Math.round(nx*(cols-1)),cy=Math.round(ny*(rows-1)),r=Math.max(2,Math.round(radius*Math.min(cols,rows)));
-  for(let y=-r;y<=r;y++)for(let x=-r;x<=r;x++){const px=cx+x,py=cy+y;if(px<1||py<1||px>=cols-1||py>=rows-1)continue;const d=Math.sqrt(x*x+y*y)/r;if(d<=1)current[py*cols+px]+=Math.cos(d*Math.PI*.5)*strength}
-}
-function emitImpulse(nx,ny,strength,radius){impulse(nx,ny,strength,radius);waterAction?.send({x:nx,y:ny,s:strength,r:radius,t:performance.now()})}
-function receiveImpulse(data){if(!data)return;impulse(data.x,data.y,data.s,data.r)}
-
+function impulse(nx,ny,strength=.9,radius=.025){if(!current)return;const cx=Math.round(nx*(cols-1)),cy=Math.round(ny*(rows-1)),r=Math.max(2,Math.round(radius*Math.min(cols,rows)));for(let y=-r;y<=r;y++)for(let x=-r;x<=r;x++){const px=cx+x,py=cy+y;if(px<1||py<1||px>=cols-1||py>=rows-1)continue;const d=Math.hypot(x,y)/r;if(d<=1)current[py*cols+px]+=Math.cos(d*Math.PI*.5)*strength}}
+function emitImpulse(nx,ny,strength,radius){impulse(nx,ny,strength,radius);waterAction?.send({x:nx,y:ny,s:strength,r:radius})}
+function receiveImpulse(data){if(data)impulse(data.x,data.y,data.s,data.r)}
 function pointerData(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width,y:(e.clientY-r.top)/r.height}}
-canvas.addEventListener('pointerdown',e=>{e.preventDefault();canvas.setPointerCapture?.(e.pointerId);const p=pointerData(e);active.set(e.pointerId,{...p,t:performance.now()});emitImpulse(p.x,p.y,1.05,0.035)});
-canvas.addEventListener('pointermove',e=>{if(!active.has(e.pointerId))return;e.preventDefault();const prev=active.get(e.pointerId),p=pointerData(e),dx=p.x-prev.x,dy=p.y-prev.y,dist=Math.hypot(dx,dy),dt=Math.max(8,performance.now()-prev.t);if(dist>.003){const speed=Math.min(2.2,dist*13000/dt);emitImpulse(p.x,p.y,.25+speed*.32,.022+Math.min(.03,speed*.012));active.set(e.pointerId,{...p,t:performance.now()})}});
+canvas.addEventListener('pointerdown',e=>{e.preventDefault();canvas.setPointerCapture?.(e.pointerId);const p=pointerData(e);active.set(e.pointerId,{...p,t:performance.now()});emitImpulse(p.x,p.y,1.05,.035)});
+canvas.addEventListener('pointermove',e=>{if(!active.has(e.pointerId))return;e.preventDefault();const prev=active.get(e.pointerId),p=pointerData(e),dist=Math.hypot(p.x-prev.x,p.y-prev.y),dt=Math.max(8,performance.now()-prev.t);if(dist>.003){const speed=Math.min(2.2,dist*13000/dt);emitImpulse(p.x,p.y,.25+speed*.32,.022+Math.min(.03,speed*.012));active.set(e.pointerId,{...p,t:performance.now()})}});
 for(const type of ['pointerup','pointercancel'])canvas.addEventListener(type,e=>{active.delete(e.pointerId);canvas.releasePointerCapture?.(e.pointerId)});
-
-function simulate(){
-  if(!current||!next)return;
-  const damping=.992;
-  for(let y=1;y<rows-1;y++)for(let x=1;x<cols-1;x++){
-    const i=y*cols+x;
-    const v=((current[i-1]+current[i+1]+current[i-cols]+current[i+cols])*.5-next[i])*damping;
-    next[i]=v;
-  }
-  const tmp=current;current=next;next=tmp;
-}
-
-function render(){
-  if(!imageData||!current)return;
-  const d=imageData.data;
-  for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
-    const i=y*cols+x,k=i*4;
-    const c=current[i];
-    const lx=x>0?current[i-1]:c,rx=x<cols-1?current[i+1]:c,uy=y>0?current[i-cols]:c,dy=y<rows-1?current[i+cols]:c;
-    const nx=rx-lx,ny=dy-uy;
-    const light=Math.max(-1,Math.min(1,-nx*.9-ny*.55+c*.45));
-    const foam=Math.max(0,Math.abs(c)-.55);
-    d[k]=4+Math.max(0,light*22)+foam*120;
-    d[k+1]=35+Math.max(0,light*65)+foam*120;
-    d[k+2]=49+Math.max(0,light*115)+foam*120;
-    d[k+3]=255;
-  }
-  const off=document.createElement('canvas');off.width=cols;off.height=rows;const o=off.getContext('2d');o.putImageData(imageData,0,0);ctx.imageSmoothingEnabled=true;ctx.drawImage(off,0,0,W,H);
-  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(67,184,219,.10)');g.addColorStop(.5,'rgba(0,70,95,.03)');g.addColorStop(1,'rgba(0,0,0,.18)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-}
-
+function normalizeOrientation(beta,gamma){let x=(gamma||0)/45,y=(beta||0)/45;const angle=screen.orientation?.angle??window.orientation??0;if(angle===90){[x,y]=[-y,x]}else if(angle===-90||angle===270){[x,y]=[y,-x]}else if(Math.abs(angle)===180){x=-x;y=-y}return{x:Math.max(-1,Math.min(1,x)),y:Math.max(-1,Math.min(1,y))}}
+function onOrientation(e){motionSeen=true;const v=normalizeOrientation(e.beta,e.gamma);targetTiltX=v.x;targetTiltY=v.y}
+function onMotion(e){if(motionSeen)return;const a=e.accelerationIncludingGravity;if(!a)return;let x=(a.x||0)/9.81,y=-(a.y||0)/9.81;const angle=screen.orientation?.angle??window.orientation??0;if(angle===90){[x,y]=[-y,x]}else if(angle===-90||angle===270){[x,y]=[y,-x]}targetTiltX=Math.max(-1,Math.min(1,x));targetTiltY=Math.max(-1,Math.min(1,y))}
+function attachMotion(){if(motionEnabled)return;addEventListener('deviceorientation',onOrientation,true);addEventListener('devicemotion',onMotion,true);motionEnabled=true;updateMotionUI('вкл')}
+function detachMotion(){removeEventListener('deviceorientation',onOrientation,true);removeEventListener('devicemotion',onMotion,true);motionEnabled=false;targetTiltX=targetTiltY=tiltX=tiltY=0;updateMotionUI('выкл')}
+async function requestMotion(){if(!motionAvailable){updateMotionUI('нет');return false}try{if(typeof DeviceMotionEvent!=='undefined'&&typeof DeviceMotionEvent.requestPermission==='function'){const r=await DeviceMotionEvent.requestPermission();if(r!=='granted'){updateMotionUI('запрет');return false}}if(typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'){const r=await DeviceOrientationEvent.requestPermission();if(r!=='granted'){updateMotionUI('запрет');return false}}attachMotion();return true}catch{updateMotionUI('ошибка');return false}}
+function initMotionState(){if(!motionAvailable){updateMotionUI('нет');$('#motionBtn').disabled=true;return}const needsPermission=(typeof DeviceMotionEvent!=='undefined'&&typeof DeviceMotionEvent.requestPermission==='function')||(typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function');if(needsPermission)updateMotionUI('разрешить');else attachMotion()}
+$('#motionBtn').onclick=async()=>{if(motionEnabled)detachMotion();else await requestMotion()};
+function applyTilt(){if(!motionEnabled||!current)return;tiltX+=(targetTiltX-tiltX)*.065;tiltY+=(targetTiltY-tiltY)*.065;const gx=tiltX*.018,gy=tiltY*.018;if(Math.abs(gx)+Math.abs(gy)<.0015)return;for(let y=2;y<rows-2;y++)for(let x=2;x<cols-2;x++){const i=y*cols+x;next[i]+=gx*(current[i-1]-current[i+1])+gy*(current[i-cols]-current[i+cols])}const now=performance.now(),mag=Math.hypot(tiltX,tiltY);if(mag>.35&&now-lastMotionKick>110){lastMotionKick=now;const ex=.5+tiltX*.42,ey=.5+tiltY*.42;impulse(Math.max(.03,Math.min(.97,ex)),Math.max(.03,Math.min(.97,ey)),.035+mag*.045,.05)}}
+function simulate(){if(!current||!next)return;const damping=.991;for(let y=1;y<rows-1;y++)for(let x=1;x<cols-1;x++){const i=y*cols+x;next[i]=((current[i-1]+current[i+1]+current[i-cols]+current[i+cols])*.5-next[i])*damping}applyTilt();const tmp=current;current=next;next=tmp}
+const off=document.createElement('canvas'),offCtx=off.getContext('2d');
+function render(){if(!imageData||!current)return;const d=imageData.data;for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const i=y*cols+x,k=i*4,c=current[i],lx=x?current[i-1]:c,rx=x<cols-1?current[i+1]:c,uy=y?current[i-cols]:c,dy=y<rows-1?current[i+cols]:c,nx=rx-lx,ny=dy-uy,light=Math.max(-1,Math.min(1,-nx*.9-ny*.55+c*.45)),foam=Math.max(0,Math.abs(c)-.55);d[k]=4+Math.max(0,light*22)+foam*120;d[k+1]=35+Math.max(0,light*65)+foam*120;d[k+2]=49+Math.max(0,light*115)+foam*120;d[k+3]=255}off.width=cols;off.height=rows;offCtx.putImageData(imageData,0,0);ctx.imageSmoothingEnabled=true;ctx.drawImage(off,0,0,W,H);const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(67,184,219,.10)');g.addColorStop(.5,'rgba(0,70,95,.03)');g.addColorStop(1,'rgba(0,0,0,.18)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
 function startLoop(){if(running)return;running=true;lastFrame=performance.now();requestAnimationFrame(loop)}
 function loop(now){const dt=now-lastFrame;lastFrame=now;const steps=dt>24?2:1;for(let i=0;i<steps;i++)simulate();render();requestAnimationFrame(loop)}
-
-const queryRoom=new URL(location.href).searchParams.get('room');
-if(/^\d{4}$/.test(queryRoom||'')){setTab('join');$('#joinCode').value=queryRoom;status(joinStatus,`Готово к подключению к ${queryRoom}`,true)}
+const queryRoom=new URL(location.href).searchParams.get('room');if(/^\d{4}$/.test(queryRoom||'')){setTab('join');$('#joinCode').value=queryRoom;status(joinStatus,`Готово к подключению к ${queryRoom}`,true)}
 </script>
 </body>
 </html>
